@@ -1,28 +1,30 @@
 # copperbot
 
-**TUK001** — a [CopperHead](https://github.com/BethanyJep/copperhead-server) Snake tournament bot (WebSocket client).
+This repository contains:
 
-## Setup
+1. **`copperhead-server/`** — full [CopperHead Server](https://github.com/BethanyJep/copperhead-server) tree (game server, `bot-library/`, docs, tests). Use this directory to run the server locally or deploy.
+2. **Root `tuk001.py` + `requirements.txt`** — minimal copy of the **TUK001** bot for a quick run without `cd` into `bot-library/` (same logic as `copperhead-server/bot-library/tuk001.py`).
+
+## Quick start (local)
+
+```bash
+python3 -m pip install -r copperhead-server/requirements.txt
+python3 copperhead-server/main.py --host 127.0.0.1 --port 8765
+```
+
+Another terminal:
 
 ```bash
 python3 -m pip install -r requirements.txt
-```
-
-## Run (against a local server)
-
-1. Start [CopperHead Server](https://github.com/BethanyJep/copperhead-server) on port `8765`.
-2. Run the bot:
-
-```bash
 python3 tuk001.py --server ws://localhost:8765/ws/ --skip-wait --difficulty 8
 ```
 
-Options: `--name`, `--difficulty` (1–10), `--quiet`, `--skip-wait`.
+Or use the copy under `copperhead-server/bot-library/tuk001.py` with the same flags.
 
-## Strategy (summary)
+## Web client
 
-BFS toward food, flood-fill when blocked, center-weighted positioning, difficulty-scaled head-on handling vs the opponent’s predicted head.
+Open the [CopperHead client](https://revodavid.github.io/copperhead-client/?server=ws%3A%2F%2Flocalhost%3A8765%2Fws%2F) with the server running.
 
 ## License
 
-MIT (see SPDX header in `tuk001.py`).
+Server and upstream files follow the upstream project; `tuk001.py` is MIT (see SPDX header).
