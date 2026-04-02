@@ -11,7 +11,7 @@ See [How-To-Build-Your-Own-Bot.md](../How-To-Build-Your-Own-Bot.md) for instruct
 * [`murderbot.py`](murderbot.py) Aggressively chases down the opponent to try and cause a collision. By @nonfamousd
 * [`sleepy_snake.py`](sleepy_snake.py) Wanders around the arena, avoids danger, and only becomes more food-aware at higher difficulty levels.
 * [`pathfinder_snake.py`](pathfinder_snake.py) Uses BFS for shortest routes to food and flood-fill space counts when blocked; head-on behavior scales with difficulty like CopperBot.
-* [`tuk001.py`](tuk001.py) **TUK001** — BFS to food, flood-fill fallback, and center-weighted positioning (stronger at higher difficulty); default in-lobby name `TUK001`.
+* [`david_bot.py`](david_bot.py) **David bot** — BFS to food, flood-fill fallback, and center-weighted positioning (stronger at higher difficulty); default in-lobby name `David bot`.
 
 ## Bot requirements
 

@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: MIT
 """
-TUK001 — CopperHead tournament bot.
+David bot — CopperHead tournament bot.
 
 Strategy
 --------
 1. Danger map from snake bodies (tails excluded), same as CopperBot/Pathfinder.
 2. BFS shortest path to prioritized food (apples slightly preferred); take first step.
 3. If no path, score safe moves by flood-fill reachability, food pickup, head-on
-   prediction (difficulty-scaled), and a center-of-arena bias — TUK001 prefers
+   prediction (difficulty-scaled), and a center-of-arena bias — David bot prefers
    staying in open central space; that bias scales up with difficulty.
 4. Occasional mistakes at low difficulty (noise on scores / path follow).
 """
@@ -100,8 +100,8 @@ def flood_reachable(
     return len(seen)
 
 
-class TUK001:
-    """TUK001: BFS to food, flood-fill fallback, center-weighted scoring."""
+class DavidBot:
+    """David bot: BFS to food, flood-fill fallback, center-weighted scoring."""
 
     def __init__(
         self,
@@ -112,7 +112,7 @@ class TUK001:
         skip_wait: bool = False,
     ):
         self.server_url = server_url
-        self.name = name or "TUK001"
+        self.name = name or "David bot"
         self.difficulty = max(1, min(10, difficulty))
         self.quiet = quiet
         self.skip_wait = skip_wait
@@ -428,20 +428,20 @@ class TUK001:
 
 
 async def main() -> None:
-    parser = argparse.ArgumentParser(description="TUK001 — CopperHead bot")
+    parser = argparse.ArgumentParser(description="David bot — CopperHead bot")
     parser.add_argument(
         "--server",
         "-s",
         default="ws://localhost:8765/ws/",
         help="Server WebSocket URL (default: ws://localhost:8765/ws/)",
     )
-    parser.add_argument("--name", "-n", default=None, help="Bot display name (default: TUK001)")
+    parser.add_argument("--name", "-n", default=None, help='Bot display name (default: "David bot")')
     parser.add_argument("--difficulty", "-d", type=int, default=5, help="AI difficulty 1-10 (default: 5)")
     parser.add_argument("--quiet", "-q", action="store_true", help="Suppress output")
     parser.add_argument("--skip-wait", action="store_true", help="Skip HTTP reachability check")
     args = parser.parse_args()
 
-    bot = TUK001(
+    bot = DavidBot(
         args.server,
         name=args.name,
         difficulty=args.difficulty,
@@ -450,7 +450,7 @@ async def main() -> None:
     )
 
     if not args.quiet:
-        print("TUK001")
+        print("David bot")
         print(f"   Server: {args.server}")
         print(f"   Difficulty: {args.difficulty}")
         print()
